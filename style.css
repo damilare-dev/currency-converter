@@ -1,0 +1,50 @@
+.converter {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.converter h2 {
+	margin-top: 0;
+}
+
+.form-group {
+	margin: 20px 0;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+select, input[type="number"] {
+	padding: 5px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+}
+
+input[type="number"]:focus {
+	outline: none;
+	border-color: #007bff;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#convert_btn {
+	padding: 10px;
+	background-color: #007bff;
+	border: none;
+	color: #fff;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#convert_btn:hover {
+	background-color: #0069d9;
+}
+
+#to_amount {
+	background-color: #f7f7f7;
+}

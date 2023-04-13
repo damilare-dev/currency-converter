@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Currency Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0" style="text-align:center;">Currency Converter</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label style="font-weight: 800;" for="amount">Amount:</label>
+                <input type="number" class="form-control" id="amount" placeholder="Enter amount">
+              </div>
+              <div class="form-group">
+                <label style="font-weight: 800;" for="from">From Currency:</label>
+                <select class="form-control" id="fromCurrency">
+                  <option value="USD">United States Dollar</option>
+                  <option value="EUR">Euro</option>
+                  <option value="GBP">British Pound</option>
+                  <option value="AED">UAE Dirham</option>
+                  <option value="AFN">Afghan Afghani</option>
+                  <option value="ALL">Albanian Lek</option>
+                  <option value="NGN">Nigerian Naira</option>
+                  <option value="MXN">Mexican Peso</option>
+                  <option value="NIO">Nicaraguan Córdoba</option>
+                  <option value="JMD">Jamaican Dollar</option>
+                  <option value="JPY">Japanese Yen</option>
+                  <option value="CAD">Canadian Dollar</option>
+                  <option value="CHF">Swiss Franc</option>
+                  <option value="GHS">Ghanaian Cedi</option>
+                  <option value="GMD">Gambian Dalasi</option>
+                  <option value="SAR">Saudi Riyal</option>
+                  <option value="ZWL">Zimbabwean Dollar</option>
+                  <option value="ZAR">South African Rand</option>
+                  <option value="TWD">New Taiwan Dollar</option>
+                  <option value="XPF">CFP Franc</option>
+                  <option value="XCD">East Caribbean Dollar</option>
+                  <option value="VND">Vietnamese Đồng</option>
+                  <option value="UGX">Ugandan Shilling</option>
+                  <option value="SGD">Singapore Dollar</option>
+                  <option value="TRY">Turkish Lira</option>
+                  <option value="RUB">Russian Ruble</option>
+                  <option value="QAR">Qatari Riyal</option>
+
+                </select>
+              </div>
+              <div class="form-group">
+                <label style="font-weight: 800;" for="to">To Currency:</label>
+                <select class="form-control" id="toCurrency">
+                    <option value="NGN">Nigerian Naira</option>
+                    <option value="USD">United States Dollar</option>
+                    <option value="EUR">Euro</option>
+                    <option value="GBP">British Pound</option>
+                    <option value="AED">UAE Dirham</option>
+                    <option value="AFN">Afghan Afghani</option>
+                    <option value="ALL">Albanian Lek</option>
+                    <option value="MXN">Mexican Peso</option>
+                    <option value="NIO">Nicaraguan Córdoba</option>
+                    <option value="JMD">Jamaican Dollar</option>
+                    <option value="JPY">Japanese Yen</option>
+                    <option value="CAD">Canadian Dollar</option>
+                    <option value="CHF">Swiss Franc</option>
+                    <option value="GHS">Ghanaian Cedi</option>
+                    <option value="GMD">Gambian Dalasi</option>
+                    <option value="SAR">Saudi Riyal</option>
+                    <option value="ZWL">Zimbabwean Dollar</option>
+                    <option value="ZAR">South African Rand</option>
+                    <option value="TWD">New Taiwan Dollar</option>
+                    <option value="XPF">CFP Franc</option>
+                    <option value="XCD">East Caribbean Dollar</option>
+                    <option value="VND">Vietnamese Đồng</option>
+                    <option value="UGX">Ugandan Shilling</option>
+                    <option value="SGD">Singapore Dollar</option>
+                    <option value="TRY">Turkish Lira</option>
+                    <option value="RUB">Russian Ruble</option>
+                    <option value="QAR">Qatari Riyal</option>
+                  </select>
+              </div>
+              <button type="button" class="btn btn-primary btn-block" onclick="convertCurrency()">Convert</button>
+            </form>
+          </div>
+          <div class="card-footer">
+            <div id="result" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: 800;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script>
+   const apiKey = "7de1a8797ca61926fcc52d87";
+
+    function convertCurrency() {
+    const fromCurrency = document.getElementById("fromCurrency").value;
+    const toCurrency = document.getElementById("toCurrency").value;
+    const amount = document.getElementById("amount").value;
+
+    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${fromCurrency}/${toCurrency}/${amount}`;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const result = data.conversion_rate * `${amount}`;
+      
+      document.getElementById("result").innerHTML = `${amount} ${fromCurrency} = ${result} ${toCurrency}`;
+    })
+    .catch(error => console.log(error));
+    }
+    
+</script>
+</body>
+</html>
